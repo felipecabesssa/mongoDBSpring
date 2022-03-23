@@ -1,0 +1,27 @@
+List 
+
+list é uma interface, interface não podemos instanciar, pra instanciar temos que usar uma implementação 
+da interface, no caso o ArrayList ex.:
+
+public List<User> findAll() {
+		User maria = new User(1, "Maria Brown", "maria@gmail.com");
+		User alex = new User(2, "Alex Green", "alex@gmail.com");
+		List<User> list = new ArrayList<>();
+		list.addAll(Arrays.asList(maria, alex));
+		return list;
+	}
+	
+Invés de simplesmente retornar a lista como acima usamos um método mais sofisticado que encapsula toda uma 
+estrutura necessaria para gente retornar respostas Http, ja com possiveis cabeçalhos, possiveis erros etc.
+
+que seria o: ResponseEntity 
+
+dai ficaria assim: public ResponseEntity<List<User>> findAll() {
+
+para retornar temos que instanciar o ResponseEntity: return ResponseEntity.ok().body(list);
+
+onde: ok - vai instanciar o ResponseEntity ja com o código de resposta Http informando que a resposta ocorreu com sucesso.
+      body - define qual sera o corpo da resposta (no nosso caso a lista)
+	
+--------------------------------------------------------------------------------------------------------------
+
