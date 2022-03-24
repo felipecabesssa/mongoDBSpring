@@ -25,3 +25,8 @@ onde: ok - vai instanciar o ResponseEntity ja com o código de resposta Http inf
 	
 --------------------------------------------------------------------------------------------------------------
 
+O uso do DTO no CRIA (UserService) e não no (UserDTO) é pq o userService ja tem injeção de dependencia e acesso ao banco de 
+dados, não é o caso, mas caso a gente precise, não precisa injetar e fazer a configuração de acesso la na userDTO tbem.
+
+--------------------------------------------------------------------------------------------------------------
+
