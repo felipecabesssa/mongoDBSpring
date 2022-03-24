@@ -27,6 +27,20 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 // que por sua vez acessa o repositório
+	
+// --------------------------------  CRUD  ----------------------------------------------
+	
+// -------------------------------- Cria usuário -----------------------------------------------------
+
+//	@RequestMapping(method=RequestMethod.POST) - mesma coisa do Postmapping
+	
+	@PostMapping
+	public ResponseEntity<Void> cria(@RequestBody UserDTO objDto) {	
+		User obj = service.fromDTO(objDto);
+		obj = service.cria(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
 
 // ---------------------------------- Lista todos -----------------------------------------------------
 	
@@ -48,16 +62,14 @@ public class UserResource {
 		return ResponseEntity.ok().body(new UserDTO(obj));
 	}
 	
-// ------------------------------------ Cria usuário -----------------------------------------------------
+// ---------------------------------------- Atualiza --------------------------------------------------------
 	
-//	@RequestMapping(method=RequestMethod.POST) - mesma coisa do Postmapping
-	
-	@PostMapping
-	public ResponseEntity<Void> cria(@RequestBody UserDTO objDto) {	
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> atualiza(@RequestBody UserDTO objDto, @PathVariable String id) {	
 		User obj = service.fromDTO(objDto);
-		obj = service.cria(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+		obj.setId(id);
+		obj = service.atualiza(obj);
+		return ResponseEntity.noContent().build();
 	}
 	
 // ---------------------------------------- Deleta --------------------------------------------------------

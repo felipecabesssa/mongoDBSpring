@@ -43,6 +43,21 @@ public class UserService {
 		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado"));
 	}
 	
+// -------------------------------------- UPDATE ---------------------------------------
+	
+	public User atualiza(User obj) {
+		User newObj = achePorId(obj.getId());
+		atualizaData(newObj, obj);
+//      esse atualizaData (que vamos criar) sera responsavel por passar os dados de obj para newObj
+		return repo.save(newObj);
+	}
+	
+	
+	private void atualizaData(User newObj, User obj) {
+		newObj.setName(obj.getName());
+		newObj.setEmail(obj.getEmail());
+	}
+
 // -------------------------------------  DELETE -----------------------------------------
 	
 	public void deleta(String id) {
