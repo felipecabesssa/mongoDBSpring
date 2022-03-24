@@ -29,4 +29,16 @@ O uso do DTO no CRIA (UserService) e não no (UserDTO) é pq o userService ja te
 dados, não é o caso, mas caso a gente precise, não precisa injetar e fazer a configuração de acesso la na userDTO tbem.
 
 --------------------------------------------------------------------------------------------------------------
+Users
+
+@DBRef(lazy = true)
+	private List<Post> posts = new ArrayList<>();
+	
+2 coisas:
+
+1 - A @DBRef indica que essa lista de posts sera referenciada no usuário (posts sera uma nova coleção) e não mais aninhados ao usuário
+2 - O lazy = true faz com que só carregue os posts do usuário se a gente explicitar isso, isso evita que caso eu queira puxar um relatório 
+    de usuários por exemplo o sistema não traga junto todos os posts de cada usuário, evitando assim desperdicio de recurso e carregamento.
+    
+---------------------------------------------------------------------------------------------------------------
 
