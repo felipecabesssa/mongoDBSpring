@@ -42,6 +42,16 @@ Users
     
 ---------------------------------------------------------------------------------------------------------------
 
+Query Methods - É um método que a gente escreve e pelo nome do método o spring consegue realizar a consulta pra gente.
+@Query - Essa anotação permite que a gente possa entrar com uma consulta do mongoDB na forma de texto JSON, essa consulta
+         é do mongoDB, então a sintaxe sera a mesma em qualquer linguagem.
+
+Referências:
+https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/
+https://docs.spring.io/spring-data/data-document/docs/current/reference/html/
+
+---------------------------------------------------------------------------------------------------------------
+
 encodeURIComponent("bom dia")
 saida - "bom%20dia"
 
