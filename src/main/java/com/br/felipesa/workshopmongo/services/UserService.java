@@ -32,7 +32,7 @@ public class UserService {
 	
 // -------------------------------------  READ -----------------------------------------
 	
-	public List<User> acheTodos(){
+	public List<User> acheTodos() {
 		return repo.findAll();	
 	}
 	
@@ -41,5 +41,12 @@ public class UserService {
 	public User achePorId(String id) {
 		Optional<User> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado"));
+	}
+	
+// -------------------------------------  DELETE -----------------------------------------
+	
+	public void deleta(String id) {
+		achePorId(id);
+		repo.deleteById(id);
 	}
 }

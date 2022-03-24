@@ -59,8 +59,17 @@ public class UserResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
+// ---------------------------------------- Deleta --------------------------------------------------------
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> deleta(@PathVariable String id) {	
+		service.deleta(id);
+		return ResponseEntity.noContent().build();
+	}
 }
 
 // .ok - retorna status 200 - ok
 // .created - retorna status 201 - created
+// .noContent - retorna status 204 - não retorna nada
 
