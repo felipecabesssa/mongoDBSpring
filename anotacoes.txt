@@ -42,3 +42,14 @@ Users
     
 ---------------------------------------------------------------------------------------------------------------
 
+encodeURIComponent("bom dia")
+saida - "bom%20dia"
+
+isso é uma função js que transforma textos alto nivel para baixo nivel, resumindo ele trata caracteres especiais, espaços etc
+para uma string que o navegador e maquina compilam.
+
+exemplo de como fazer isso no java na classe URL dentro do pacote util . função URLDecoder e Endpoint no PostResource e 
+PostRepository buscando no repositório do mongo e tratando camelcase com o IgnoreCase (List<Post> findByTitleContainingIgnoreCase(String title);)
+
+obs - método estático não precisa instanciar.
+

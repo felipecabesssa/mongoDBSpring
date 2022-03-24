@@ -1,5 +1,6 @@
 package com.br.felipesa.workshopmongo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ public class PostService {
 	public Post achePorId(String id) {
 		Optional<Post> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Objeto não encontrado"));
+	}
+	
+	public List<Post> achePorTitulo(String text) {
+		return repo.findByTitleContainingIgnoreCase(text);
 	}
 
 }
