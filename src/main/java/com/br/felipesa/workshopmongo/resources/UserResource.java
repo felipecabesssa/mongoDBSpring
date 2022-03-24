@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.br.felipesa.workshopmongo.domain.Post;
 import com.br.felipesa.workshopmongo.domain.User;
 import com.br.felipesa.workshopmongo.dto.UserDTO;
 import com.br.felipesa.workshopmongo.services.UserService;
@@ -79,6 +80,15 @@ public class UserResource {
 		service.deleta(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+// --------------------------------------  fim do CRUD ---------------------------------------
+	
+	@RequestMapping(value="/{id}/posts", method=RequestMethod.GET)
+	public ResponseEntity<List<Post>> achePosts(@PathVariable String id) {	
+		User obj = service.achePorId(id);
+		return ResponseEntity.ok().body(obj.getPosts());
+	}
+	
 }
 
 // .ok - retorna status 200 - ok
